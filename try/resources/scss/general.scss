@@ -1,0 +1,30 @@
+li {
+    list-style: none;
+}
+
+main,
+aside {
+    height: calc(100vh - 100px);
+}
+
+header,
+aside,
+#Dash {
+    a {
+        text-decoration: none;
+        color: currentColor;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+header {
+    height: 50px;
+}
+aside {
+    width: 250px;
+}
+footer {
+    height: 50px;
+}
