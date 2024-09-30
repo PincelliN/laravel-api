@@ -18,3 +18,6 @@ use App\Http\Controllers\Api\PageController;
 Route::get('/tutti-i-progetti', [PageController::class, 'AllWorks']);
 Route::get('/tutti-i-tipi', [PageController::class, 'AllTypes']);
 Route::get('/tutte-le_tecnologie', [PageController::class, 'AllTechnologies']);
+Route::get('/dettaglio/{slug}', [PageController::class, 'DetailWork']);
+Route::get('/Tutti-i-progetti-per-tipo/{slug}', [PageController::class, 'TypeAllWorks']);
+Route::get('/Tutti-i progetti-per-Tecnologie/{slug}', [PageController::class, 'TechnologyWorks']);
