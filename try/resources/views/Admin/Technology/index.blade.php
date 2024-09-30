@@ -33,7 +33,7 @@
         @endif
         <form class="my-3 d-flex align-items-center" action="{{ route('admin.technology.store') }}" method="post">
             @csrf
-            <input type="text" name="name" value="{{ $errors->any() && ' ' ? ' ' : old('name') }}">
+            <input type="text" name="name" value="{{ old('name') }}">
             <button class="ms-3 btn btn-success" type="submit">Invia</button>
         </form>
         @dump(old())
