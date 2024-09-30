@@ -82,7 +82,7 @@ class PageController extends Controller
     }
     public function TypeAllWorks($slug)
     {
-        $TypeWorks = Type::where('slug', $slug)->with('works')->get();
+        $TypeWorks = Type::where('slug', $slug)->with('works.technologies')->get();
         if ($TypeWorks) {
             $success = true;
         } else {
@@ -98,7 +98,7 @@ class PageController extends Controller
     public function TechnologyWorks($slug)
     {
 
-        $TechnologyWorks = Technology::where('slug', $slug)->with('works')->get();
+        $TechnologyWorks = Technology::where('slug', $slug)->with('works.type')->get();
         if ($TechnologyWorks) {
             $success = true;
         } else {
