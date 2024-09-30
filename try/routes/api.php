@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\Api\Pagecontroller;
+use App\Http\Controllers\Api\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +15,6 @@ use app\Http\Controllers\Api\Pagecontroller;
 |
 */
 
-Route::get('/', [Pagecontroller::class, 'index']);
+Route::get('/tutti-i-progetti', [PageController::class, 'AllWorks']);
+Route::get('/tutti-i-tipi', [PageController::class, 'AllTypes']);
+Route::get('/tutte-le_tecnologie', [PageController::class, 'AllTechnologies']);
