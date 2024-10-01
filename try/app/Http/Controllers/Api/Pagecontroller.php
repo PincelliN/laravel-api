@@ -15,7 +15,7 @@ class PageController extends Controller
 {
     public function AllWorks()
     {
-        $works = Work::all();
+        $works = Work::orderBy('id')->paginate(20);
         if ($works) {
             $success = true;
             foreach ($works as $work) {
@@ -30,7 +30,7 @@ class PageController extends Controller
             $success = false;
         }
 
-        return response()->json(compact('success', 'work'));
+        return response()->json(compact('success', 'works'));
     }
 
 
@@ -58,7 +58,11 @@ class PageController extends Controller
         } else {
             $success = false;
         }
-        return response()->json(compact('technologies', 'success'));
+        $data = [
+            'success' => $success,
+            'result' => $technologies
+        ];
+        return response()->json($data);
     }
 
 
@@ -98,7 +102,7 @@ class PageController extends Controller
     public function TechnologyWorks($slug)
     {
 
-        $TechnologyWorks = Technology::where('slug', $slug)->with('works.type')->get();
+        $TechnologyWorks = Technology::where('slug', $slug)->with('works')->get();
         if ($TechnologyWorks) {
             $success = true;
         } else {
