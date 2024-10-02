@@ -8,6 +8,7 @@ use App\Models\Technology;
 use App\Models\Type;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
+use illuminate\Support\Facades\Storage;
 
 use function PHPSTORM_META\type;
 
@@ -15,7 +16,7 @@ class PageController extends Controller
 {
     public function allWorks()
     {
-        $works = Work::orderBy('id')->with('type', 'technologies')->paginate(20);
+        $works = Work::orderBy('id')->with('type', 'technologies')->paginate(10);
         if ($works) {
             $success = true;
             foreach ($works as $work) {
@@ -73,7 +74,7 @@ class PageController extends Controller
         if ($work) {
             $success = true;
             if ($work->path_img) {
-                $work->path_img = asset('storage/' . $work->path_img);
+                $work->path_img = Storage::url($work->path_img);
             } else {
                 $work->path_img = '/img/default-image.jpg';
                 $work->original_name_img = 'No img';
