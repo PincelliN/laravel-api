@@ -15,9 +15,9 @@ use App\Http\Controllers\Api\PageController;
 |
 */
 
-Route::get('/works', [PageController::class, 'AllWorks']);
-Route::get('/types', [PageController::class, 'AllTypes']);
-Route::get('/technologis', [PageController::class, 'AllTechnologies']);
-Route::get('/dettaglio/{slug}', [PageController::class, 'DetailWork']);
-Route::get('/Tutti-i-progetti-per-tipo/{slug}', [PageController::class, 'TypeAllWorks']);
-Route::get('/Tutti-i progetti-per-Tecnologie/{slug}', [PageController::class, 'TechnologyWorks']);
+Route::get('/works', [PageController::class, 'allWorks']);
+Route::get('/types', [PageController::class, 'allTypes']);
+Route::get('/technologies', [PageController::class, 'allTechnologies']);
+Route::get('/dettaglio/{slug}', [PageController::class, 'detailWork']);
+Route::get('/Tutti-i-progetti-per-tipo/{slug}', [PageController::class, 'typeAllWorks']);
+Route::get('/Tutti-i progetti-per-Tecnologie/{slug}', [PageController::class, 'technologyWorks']);

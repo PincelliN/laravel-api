@@ -13,9 +13,9 @@ use function PHPSTORM_META\type;
 
 class PageController extends Controller
 {
-    public function AllWorks()
+    public function allWorks()
     {
-        $works = Work::orderBy('id')->paginate(20);
+        $works = Work::orderBy('id')->with('type', 'technologies')->paginate(20);
         if ($works) {
             $success = true;
             foreach ($works as $work) {
@@ -34,7 +34,7 @@ class PageController extends Controller
     }
 
 
-    public function AllTypes()
+    public function allTypes()
     {
         $types = Type::all();
         if ($types) {
@@ -50,7 +50,7 @@ class PageController extends Controller
     }
 
 
-    public function AllTechnologies()
+    public function allTechnologies()
     {
         $technologies = Technology::all();
         if ($technologies) {
@@ -66,7 +66,7 @@ class PageController extends Controller
     }
 
 
-    public function DetailWork($slug)
+    public function detailWork($slug)
     {
         $work = Work::where('slug', $slug)->with('type', 'technologies')->first();
 
@@ -84,7 +84,7 @@ class PageController extends Controller
 
         return response()->json(compact('work', 'success'));
     }
-    public function TypeAllWorks($slug)
+    public function typeAllWorks($slug)
     {
         $TypeWorks = Type::where('slug', $slug)->with('works.technologies')->get();
         if ($TypeWorks) {
@@ -99,7 +99,7 @@ class PageController extends Controller
         return response()->json($data);
     }
 
-    public function TechnologyWorks($slug)
+    public function technologyWorks($slug)
     {
 
         $TechnologyWorks = Technology::where('slug', $slug)->with('works')->get();
