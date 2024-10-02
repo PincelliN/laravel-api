@@ -76,7 +76,7 @@ class PageController extends Controller
             if ($work->path_img) {
                 $work->path_img = Storage::url($work->path_img);
             } else {
-                $work->path_img = '/img/default-image.jpg';
+                $work->path_img = Storage::url('default-image.jpg');
                 $work->original_name_img = 'No img';
             }
         } else {
