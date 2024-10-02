@@ -8,7 +8,7 @@ use App\Models\Technology;
 use App\Models\Type;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
-use illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 
 use function PHPSTORM_META\type;
 
@@ -21,9 +21,9 @@ class PageController extends Controller
             $success = true;
             foreach ($works as $work) {
                 if ($work->path_img) {
-                    $work->path_img = asset('storage/' . $work->path_img);
+                    $work->path_img = Storage::url($work->path_img);
                 } else {
-                    $work->path_img = '/img/default-image.jpg';
+                    $work->path_img = Storage::url('default-image.jpg');
                     $work->original_name_img = 'No img';
                 }
             }
