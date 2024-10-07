@@ -23,6 +23,7 @@ return new class extends Migration
             $table->tinyInteger('post');
             $table->tinyInteger('collaborators')->default(0);
             $table->text('description')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

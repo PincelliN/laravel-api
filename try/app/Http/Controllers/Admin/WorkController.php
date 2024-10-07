@@ -150,10 +150,34 @@ class WorkController extends Controller
      */
     public function destroy(Work $work)
     {
+        /*  if ($work->path_img) {
+            Storage::delete($work->path_img);
+        } */
+        $work->delete();
+        return redirect()->route('admin.work.index')->with('delete', 'il Progetto' . $work['title'] . ' è stato cancellato');
+    }
+
+    public function trash()
+    {
+        $works = Work::onlyTrashed()->orderBy('id')->get();
+        return view('admin.work.trash', compact('works'));
+    }
+
+
+    public function restore($id)
+    {
+        $work = Work::withTrashed()->find($id);
+        $work->restore();
+        return redirect()->route('admin.work.index')->with('message', 'Il work' . $work->title . 'é stato ripristinto');
+    }
+
+    public function delete($id)
+    {
+        $work = Work::withTrashed()->find($id);
         if ($work->path_img) {
             Storage::delete($work->path_img);
         }
-        $work->delete();
-        return redirect()->route('admin.work.index')->with('delete', 'il Progetto' . $work['title'] . ' è stato cancellato');
+        $work->forceDelete();
+        return redirect()->route('admin.work.index')->with('delete', 'Il work' . $work->title . 'é stato eliminato definitivamente');
     }
 }

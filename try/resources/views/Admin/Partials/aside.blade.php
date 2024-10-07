@@ -5,6 +5,7 @@
         <li><a href="{{ route('admin.work.create') }}"><i class="fa-solid fa-plus px-1"></i>Aggiungi Progetto</a></li>
         <li><a href="{{ route('admin.type.index') }}"><i class="fa-solid fa-font px-1"></i>Type</a></li>
         <li><a href="{{ route('admin.technology.index') }}"><i class="fa-solid fa-microchip px-1"></i>Technology</a></li>
+        <li><a href="{{ route('admin.work.trash') }}"><i class="fa-solid fa-trash px-1"></i>Cestino</a></li>
     </ul>
 
 </aside>
